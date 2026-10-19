@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-MZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suporte B-1 · Física para a 11ª e 12ª classe</title>
+<meta name="description" content="Resumos, fichas de exercícios e grupo de estudo de Física para estudantes pré-universitários.">
+<link rel="icon" href="logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0e2250;
+    --navy-soft: #1d3568;
+    --gold: #c9a24a;
+    --gold-soft: #f1e3bd;
+    --mist: #f1f5fb;
+    --ice: #dde7f5;
+    --ink: #1c2a48;
+    --muted: #5b6985;
+    --white: #ffffff;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Nunito Sans", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--mist);
+    line-height: 1.6;
+    font-size: 17px;
+  }
+  h1, h2, h3 { font-family: "Sora", sans-serif; color: var(--navy); line-height: 1.2; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+  /* Cabeçalho */
+  header.top { background: var(--white); border-bottom: 1px solid var(--ice); position: sticky; top: 0; z-index: 10; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 10px; padding-bottom: 10px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand img { width: 46px; height: 46px; border-radius: 12px; display: block; }
+  .brand span { font-family: "Sora", sans-serif; font-weight: 600; color: var(--navy); font-size: 1.05rem; }
+  nav.links { display: flex; gap: 22px; }
+  nav.links a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: .95rem; }
+  nav.links a:hover { color: var(--navy); }
+
+  /* Botões */
+  .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: .98rem; border: 2px solid transparent; transition: background .2s, color .2s, border-color .2s; cursor: pointer; font-family: inherit; }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: #d6b35f; }
+  .btn-line { border-color: var(--navy); color: var(--navy); background: transparent; }
+  .btn-line:hover { background: var(--navy); color: var(--white); }
+  .btn-small { padding: 9px 18px; font-size: .9rem; }
+
+  /* Hero */
+  .hero { padding: 64px 0 56px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 44px; align-items: center; }
+  .hero h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); margin-bottom: 18px; }
+  .hero p.lead { color: var(--muted); font-size: 1.12rem; max-width: 46ch; margin-bottom: 28px; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* Cartão da onda: o elemento marcante */
+  .wave-card { background: var(--navy); border-radius: 26px; padding: 22px 22px 20px; color: var(--white); box-shadow: 0 18px 40px rgba(14,34,80,.18); }
+  .wave-card h2 { color: var(--white); font-size: 1.05rem; margin-bottom: 4px; }
+  .wave-card .sub { color: #b9c6e4; font-size: .92rem; margin-bottom: 10px; }
+  .wave-card svg { width: 100%; height: auto; display: block; border-radius: 14px; background: var(--navy-soft); }
+  .wave-card .axis { stroke: rgba(255,255,255,.18); stroke-width: 1; }
+  .wave-card .line { fill: none; stroke: var(--gold); stroke-width: 3; stroke-linecap: round; }
+  .controls { display: grid; gap: 12px; margin-top: 16px; }
+  .controls label { display: flex; justify-content: space-between; font-size: .9rem; color: #d3dcf0; }
+  .controls input[type=range] { width: 100%; accent-color: var(--gold); }
+  .readout { margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.14); font-size: .95rem; color: var(--gold-soft); }
+
+  /* Secções */
+  section.block { padding: 56px 0; }
+  section.alt { background: var(--white); }
+  .block h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 8px; }
+  .block .intro { color: var(--muted); max-width: 56ch; margin-bottom: 28px; }
+
+  /* Separadores da matéria */
+  .tabs { display: inline-flex; background: var(--ice); border-radius: 999px; padding: 5px; margin-bottom: 22px; }
+  .tabs button { border: 0; background: transparent; padding: 10px 24px; border-radius: 999px; font: 700 .95rem "Nunito Sans", sans-serif; color: var(--muted); cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--navy); color: var(--white); }
+  .topics { display: grid; gap: 12px; }
+  details.topic { background: var(--white); border: 1px solid var(--ice); border-radius: var(--radius); padding: 0 20px; }
+  details.topic[open] { border-color: var(--gold); }
+  details.topic summary { cursor: pointer; padding: 18px 0; font: 600 1.05rem "Sora", sans-serif; color: var(--navy); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  details.topic summary::-webkit-details-marker { display: none; }
+  details.topic summary::after { content: "+"; font-size: 1.5rem; color: var(--gold); line-height: 1; }
+  details.topic[open] summary::after { content: "–"; }
+  details.topic .body { padding: 0 0 20px; }
+  details.topic .body p { color: var(--muted); margin-bottom: 12px; }
+  .formulas { list-style: none; display: grid; gap: 8px; }
+  .formulas li { background: var(--mist); border-left: 4px solid var(--gold); padding: 9px 14px; border-radius: 8px; font-size: 1rem; }
+  .formulas small { display: block; color: var(--muted); font-size: .82rem; }
+
+  /* Fichas */
+  .sheets { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 16px; }
+  .sheet { background: var(--mist); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .sheet .tag { align-self: flex-start; background: var(--gold-soft); color: #6d5416; font-weight: 700; font-size: .82rem; padding: 3px 12px; border-radius: 999px; }
+  .sheet h3 { font-size: 1.05rem; }
+  .sheet p { color: var(--muted); font-size: .95rem; flex: 1; }
+
+  /* Comunidade */
+  .community { background: var(--navy); border-radius: 28px; padding: 44px 34px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: center; }
+  .community h2 { color: var(--white); }
+  .community p { color: #c3cfe8; max-width: 48ch; }
+  .community ul { list-style: none; display: grid; gap: 10px; color: var(--white); }
+  .community li { padding-left: 26px; position: relative; }
+  .community li::before { content: ""; position: absolute; left: 0; top: .55em; width: 12px; height: 12px; border-radius: 50%; background: var(--gold); }
+
+  footer { padding: 34px 0 44px; text-align: center; color: var(--muted); font-size: .92rem; }
+
+  @media (max-width: 820px) {
+    .hero .wrap, .community { grid-template-columns: 1fr; }
+    nav.links { display: none; }
+    .hero { padding-top: 40px; }
+    .community { padding: 32px 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">
+      <img src="logo.jpg" alt="Logótipo Suporte B-1">
+      <span>Suporte B-1</span>
+    </a>
+    <nav class="links" aria-label="Principal">
+      <a href="#materia">Matéria</a>
+      <a href="#fichas">Fichas</a>
+      <a href="#grupo">Grupo de estudo</a>
+    </nav>
+    <a class="btn btn-gold btn-small" data-whatsapp href="#grupo">Entrar no grupo</a>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Física sem pressa, com apoio de verdade.</h1>
+        <p class="lead">Resumos claros, fichas de exercícios e um grupo para tirar dúvidas. Feito para estudantes da 11ª e da 12ª classe.</p>
+        <div class="actions">
+          <a class="btn btn-gold" href="#materia">Ver a matéria</a>
+          <a class="btn btn-line" href="#fichas">Baixar fichas</a>
+        </div>
+      </div>
+
+      <div class="wave-card">
+        <h2>Mexe na onda</h2>
+        <p class="sub">Muda a amplitude e a frequência e vê o que acontece.</p>
+        <svg viewBox="0 0 400 180" role="img" aria-label="Onda sinusoidal animada">
+          <line class="axis" x1="0" y1="90" x2="400" y2="90"></line>
+          <path id="wavePath" class="line" d=""></path>
+        </svg>
+        <div class="controls">
+          <label for="amp"><span>Amplitude</span><span id="ampVal"></span></label>
+          <input id="amp" type="range" min="10" max="80" value="45">
+          <label for="freq"><span>Frequência</span><span id="freqVal"></span></label>
+          <input id="freq" type="range" min="1" max="8" value="3">
+        </div>
+        <p class="readout" id="readout"></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt" id="materia">
+    <div class="wrap">
+      <h2>Matéria</h2>
+      <p class="intro">Escolhe a tua classe e abre cada tema para ver o resumo e as fórmulas principais.</p>
+      <div class="tabs" role="tablist" aria-label="Classe">
+        <button role="tab" id="tab11" aria-selected="true" data-classe="11">11ª classe</button>
+        <button role="tab" id="tab12" aria-selected="false" data-classe="12">12ª classe</button>
+      </div>
+      <div class="topics" id="topics" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section class="block" id="fichas">
+    <div class="wrap">
+      <h2>Fichas de exercícios</h2>
+      <p class="intro">Imprime ou guarda no telemóvel. Resolve primeiro sozinho e depois confere no grupo.</p>
+      <div class="sheets" id="sheets"></div>
+    </div>
+  </section>
+
+  <section class="block" id="grupo">
+    <div class="wrap">
+      <div class="community">
+        <div>
+          <h2>Grupo de estudo no WhatsApp</h2>
+          <p style="margin: 10px 0 24px;">Pergunta o que não percebeste, partilha a tua resolução e recebe as novas fichas assim que saem.</p>
+          <a class="btn btn-gold" data-whatsapp href="#grupo">Entrar no grupo</a>
+        </div>
+        <ul>
+          <li>Dúvidas respondidas no grupo</li>
+          <li>Fichas novas todas as semanas</li>
+          <li>Revisão antes dos testes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Suporte B-1 · Suporte profissional para estudantes de Física</div>
+</footer>
+
+<script>
+/* ============ EDITA AQUI ============ */
+const CONFIG = {
+  // Troca pelo link de convite do teu grupo de WhatsApp
+  whatsapp: "https://chat.whatsapp.com/HbIlgFwSXzG9N6jwoD7xkz?s=cl&p=a&mlu=4&ilr=4",
+
+  // Temas por classe (ajusta ao programa que ensinas)
+  topics: {
+    "11": [
+      { title: "Cinemática", text: "Descreve o movimento sem olhar para as causas: posição, velocidade e aceleração.",
+        formulas: [
+          ["s = s₀ + v·t", "Movimento uniforme (velocidade constante)"],
+          ["v = v₀ + a·t", "Movimento uniformemente variado"],
+          ["s = s₀ + v₀·t + ½·a·t²", "Posição no movimento uniformemente variado"]
+        ] },
+      { title: "Dinâmica", text: "Explica porque os corpos se movem. A força resultante muda a velocidade do corpo.",
+        formulas: [
+          ["F = m·a", "2.ª lei de Newton"],
+          ["P = m·g", "Peso de um corpo (g ≈ 10 m/s²)"],
+          ["Fₐ = μ·N", "Força de atrito"]
+        ] },
+      { title: "Trabalho e energia", text: "A energia não se perde: transforma-se. Em sistemas sem atrito, a energia mecânica conserva-se.",
+        formulas: [
+          ["W = F·d·cos θ", "Trabalho de uma força"],
+          ["E꜀ = ½·m·v²", "Energia cinética"],
+          ["Eₚ = m·g·h", "Energia potencial gravítica"]
+        ] },
+      { title: "Calor e temperatura", text: "Calor é energia em trânsito entre corpos com temperaturas diferentes.",
+        formulas: [
+          ["Q = m·c·ΔT", "Calor trocado sem mudança de estado"],
+          ["T(K) = T(°C) + 273", "Conversão para Kelvin"]
+        ] }
+    ],
+    "12": [
+      { title: "Eletricidade", text: "Estuda a corrente elétrica nos circuitos e a relação entre tensão, corrente e resistência.",
+        formulas: [
+          ["U = R·I", "Lei de Ohm"],
+          ["P = U·I", "Potência elétrica"],
+          ["R = R₁ + R₂", "Resistências em série"]
+        ] },
+      { title: "Magnetismo", text: "Cargas em movimento criam campos magnéticos, e os campos magnéticos exercem força sobre correntes.",
+        formulas: [
+          ["F = B·I·L·sen θ", "Força sobre um fio com corrente"],
+          ["ε = –ΔΦ/Δt", "Lei de Faraday (indução)"]
+        ] },
+      { title: "Ondas e óptica", text: "As ondas transportam energia sem transportar matéria. A luz também se comporta como onda.",
+        formulas: [
+          ["v = λ·f", "Velocidade de uma onda"],
+          ["T = 1/f", "Período e frequência"],
+          ["n₁·sen θ₁ = n₂·sen θ₂", "Lei de Snell (refração)"]
+        ] },
+      { title: "Física moderna", text: "A luz troca energia em pacotes (fotões) e os eletrões no átomo só ocupam níveis de energia definidos.",
+        formulas: [
+          ["E = h·f", "Energia de um fotão"],
+          ["E꜀ = h·f – φ", "Efeito fotoelétrico"]
+        ] }
+    ]
+  },
+
+  // Fichas: coloca os PDFs na pasta "fichas" do repositório
+  sheets: [
+    { classe: "11ª", title: "Ficha 1 · Cinemática", text: "Movimento uniforme e uniformemente variado.", file: "fichas/ficha-01.pdf" },
+    { classe: "11ª", title: "Ficha 2 · Leis de Newton", text: "Problemas de força, massa e aceleração.", file: "fichas/ficha-02.pdf" },
+    { classe: "11ª", title: "Ficha 3 · Energia", text: "Trabalho, energia cinética e potencial.", file: "fichas/ficha-03.pdf" },
+    { classe: "12ª", title: "Ficha 4 · Circuitos elétricos", text: "Lei de Ohm, série e paralelo.", file: "fichas/ficha-04.pdf" },
+    { classe: "12ª", title: "Ficha 5 · Ondas", text: "Período, frequência e velocidade de onda.", file: "fichas/ficha-05.pdf" },
+    { classe: "12ª", title: "Ficha 6 · Física moderna", text: "Fotões e efeito fotoelétrico.", file: "fichas/ficha-06.pdf" }
+  ]
+};
+/* ============ FIM DA CONFIGURAÇÃO ============ */
+
+/* WhatsApp */
+document.querySelectorAll("[data-whatsapp]").forEach(a => {
+  a.href = CONFIG.whatsapp;
+  a.target = "_blank";
+  a.rel = "noopener";
+});
+
+/* Matéria */
+const topicsEl = document.getElementById("topics");
+function renderTopics(classe) {
+  topicsEl.setAttribute("aria-labelledby", "tab" + classe);
+  topicsEl.innerHTML = CONFIG.topics[classe].map(t => `
+    <details class="topic">
+      <summary>${t.title}</summary>
+      <div class="body">
+        <p>${t.text}</p>
+        <ul class="formulas">
+          ${t.formulas.map(f => `<li>${f[0]}<small>${f[1]}</small></li>`).join("")}
+        </ul>
+      </div>
+    </details>`).join("");
+}
+document.querySelectorAll(".tabs button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b === btn));
+    renderTopics(btn.dataset.classe);
+  });
+});
+renderTopics("11");
+
+/* Fichas */
+document.getElementById("sheets").innerHTML = CONFIG.sheets.map(s => `
+  <article class="sheet">
+    <span class="tag">${s.classe} classe</span>
+    <h3>${s.title}</h3>
+    <p>${s.text}</p>
+    <a class="btn btn-line btn-small" href="${s.file}" download>Baixar PDF</a>
+  </article>`).join("");
+
+/* Onda interativa */
+const path = document.getElementById("wavePath");
+const amp = document.getElementById("amp");
+const freq = document.getElementById("freq");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let phase = 0;
+
+function updateReadout() {
+  const f = Number(freq.value);
+  document.getElementById("ampVal").textContent = amp.value + " unidades";
+  document.getElementById("freqVal").textContent = f + " Hz";
+  document.getElementById("readout").textContent =
+    "Período T = 1/f = " + (1 / f).toFixed(2).replace(".", ",") + " s";
+}
+function drawWave() {
+  const A = Number(amp.value);
+  const cycles = Number(freq.value) * 0.9;
+  let d = "";
+  for (let x = 0; x <= 400; x += 4) {
+    const y = 90 - A * Math.sin((x / 400) * cycles * 2 * Math.PI - phase);
+    d += (x === 0 ? "M" : "L") + x + " " + y.toFixed(1) + " ";
+  }
+  path.setAttribute("d", d);
+}
+function loop() {
+  phase += 0.04;
+  drawWave();
+  requestAnimationFrame(loop);
+}
+[amp, freq].forEach(el => el.addEventListener("input", () => { updateReadout(); drawWave(); }));
+updateReadout();
+drawWave();
+if (!reduceMotion) requestAnimationFrame(loop);
+</script>
+</body>
+</html>
